@@ -1,46 +1,77 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./styles/App.scss";
 import Shop from "./components/Shop";
 
-
 const App = () => {
-  const products = [
-    {
-      name: "10",
-      url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/10_front.jpg",
-      cost: 11,
-      quantity: 0,
-    },
-    {
-      name: "20",
-      url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/20_front.jpg",
-      cost: 22,
-      quantity: 0,
-    },
-    {
-      name: "50",
-      url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/50_front.jpg",
-      cost: 55,
-      quantity: 0,
-    },
-  ];
+	const initialProducts = [
+		{
+			name: "10",
+			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/10_front.jpg",
+			cost: 11,
+			quantity: 0,
+		},
+		{
+			name: "20",
+			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/20_front.jpg",
+			cost: 22,
+			quantity: 0,
+		},
+		{
+			name: "50",
+			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/50_front.jpg",
+			cost: 55,
+			quantity: 0,
+		},
+	];
 
-  const [quantity, setQuantity] = useState(products)
+	const [products, setProducts] = useState(initialProducts);
 
-  return (
+	const alterQuantity = (name, direction) => {
+    console.log(name, direction)
+    console.log(products)
+		setProducts(
+			products.map((product) => {
+        console.log(product)
+				if (product.name === name) {
+					if (direction === '+') {
+            if (product.quantity < 10) {
+              product.quantity++
+            }
+          } else {
+            if (product.quantity > 1) {
+              product.quantity--
+            }
+          }
+				}
+				return product;
+			})
+		);
+	};
+
+	return (
 		<Router>
 			<div className="App">
 				<nav className="navbar">
-					<Link className="nav-link" to="/">Home</Link>
-					<Link className="nav-link" to="/about">About</Link>
-					<Link className="nav-link" to="/shop">Shop</Link>
+					<Link className="nav-link" to="/">
+						Home
+					</Link>
+					<Link className="nav-link" to="/about">
+						About
+					</Link>
+					<Link className="nav-link" to="/shop">
+						Shop
+					</Link>
 				</nav>
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/about" component={About} />
-						<Route exact path="/shop" component={() => <Shop products={products}/>} />
-					</Switch>
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route exact path="/about" component={About} />
+					<Route
+						exact
+						path="/shop"
+						render={(props) => <Shop {...props} products={products} alterQuantity={alterQuantity}/>}
+					/>
+				</Switch>
 			</div>
 		</Router>
 	);
@@ -56,13 +87,13 @@ const About = () => {
 			<h2>About</h2>
 			<p>
 				Thanks for visiting! This site was created by{" "}
-				<a target="_blank" rel='noreferrer' href="https://github.com/Ideopunk/">Conor Barnes</a> as a way to practice routing
-				with React.
+				<a target="_blank" rel="noopener noreferrer" href="https://github.com/Ideopunk/">
+					Conor Barnes
+				</a>{" "}
+				as a way to practice routing with React.
 			</p>
 		</div>
 	);
 };
-
-
 
 export default App;

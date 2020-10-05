@@ -3,7 +3,7 @@ import React from "react";
 
 
 const Shop = (props) => {
-    const productCards = props.products.map(product => <Card product={product}/>)
+    const productCards = props.products.map(product => <Card key={product.name} alterQuantity = {props.alterQuantity} product={product}/>)
 	return (
 		<div className="content">
 			Shop
@@ -19,9 +19,9 @@ const Card = (props) => {
 			<img className="product" src={props.product.url} alt="money" />
             <p>Sale: ${props.product.cost}</p>
             <div className="quantity">
-                <button>-</button>
+                <button onClick={() => {props.alterQuantity(props.product.name, '-')}}>-</button>
                 <p>{props.product.quantity}</p>
-                <button>+</button>
+                <button onClick={() => {props.alterQuantity(props.product.name, '+')}}>+</button>
             </div>
 		</div>
 	);
