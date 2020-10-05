@@ -65,7 +65,6 @@ const App = () => {
 	};
 
   const totalQuantity = products.reduce((a, b) => ({quantity: a.quantity + b.quantity}))
-  console.log(totalQuantity.quantity)
 
 	return (
 		<Router>
