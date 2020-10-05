@@ -1,13 +1,13 @@
 import React from "react";
 
-
-
 const Shop = (props) => {
-    const productCards = props.products.map(product => <Card key={product.name} alterQuantity = {props.alterQuantity} product={product}/>)
+	const productCards = props.products.map((product) => (
+		<Card key={product.name} alterQuantity={props.alterQuantity} product={product} />
+	));
 	return (
 		<div className="shop">
 			<div className="products">{productCards}</div>
-			<div className="total">Total</div>
+            <Cart products={props.products}/>
 		</div>
 	);
 };
@@ -15,15 +15,32 @@ const Shop = (props) => {
 const Card = (props) => {
 	return (
 		<div className="card">
-            <p>{props.product.name}</p>
+			<p>{props.product.name}</p>
 			<img className="product" src={props.product.url} alt="money" />
-            <p>Sale: ${props.product.cost}</p>
-            <div className="quantity">
-                <button onClick={() => {props.alterQuantity(props.product.name, '-')}}>-</button>
-                <p>{props.product.quantity}</p>
-                <button onClick={() => {props.alterQuantity(props.product.name, '+')}}>+</button>
-            </div>
+			<p>Sale: ${props.product.cost}</p>
+			<div className="quantity">
+				<button
+					onClick={() => {
+						props.alterQuantity(props.product.name, "-");
+					}}
+				>
+					-
+				</button>
+				<p>{props.product.quantity}</p>
+				<button
+					onClick={() => {
+						props.alterQuantity(props.product.name, "+");
+					}}
+				>
+					+
+				</button>
+			</div>
 		</div>
 	);
 };
+
+const Cart = (props) => {
+	return <div className="cart">Total</div>;
+};
+
 export default Shop;

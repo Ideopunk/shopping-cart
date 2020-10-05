@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import "./styles/App.scss";
 import Shop from "./components/Shop";
 
 const App = () => {
 	const initialProducts = [
+    {
+      name: "5",
+      url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/5_front.jpg",
+      cost: 6,
+      quantity: 0,
+    },
 		{
 			name: "10",
 			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/10_front.jpg",

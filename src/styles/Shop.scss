@@ -1,0 +1,45 @@
+.shop {
+	height: 90vh;
+	display: flex;
+	box-sizing: border-box;
+}
+
+.products {
+	display: flex;
+	flex-flow: column wrap;
+	height: 700px;
+	box-sizing: border-box;
+	flex: 3 300px;
+}
+
+.cart {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+    flex: 2 200px;
+    border-left: 2px solid black;
+}
+
+// Card css
+
+.card {
+	width: 400px;
+	margin: 1.5rem;
+	border: 1px solid black;
+	border-radius: 15px;
+	padding: 1.5rem;
+	box-sizing: border-box;
+}
+
+.product {
+	width: 100%;
+	object-fit: contain;
+}
+
+.quantity {
+	display: flex;
+	justify-content: space-between;
+	max-width: 100px;
+}

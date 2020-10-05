@@ -1,13 +1,14 @@
 @import "Reset";
+@import "Shop";
 
 .navbar {
-    min-height: 150px;
+    height: 10vh;
     background-color: black;
     color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .content {
@@ -30,38 +31,6 @@ h2 {
     margin: 1rem;
 }
 
-.card {
-    width: 500px;
-    margin: 2rem;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-sizing: border-box;
-}
-
-.product {
-    width: 100%;
-    object-fit: contain;
-}
-
-.quantity {
-    display: flex;
-    justify-content: space-between;
-    max-width: 100px;
-}
-
 .active-link {
     color: grey;
-}
-
-.shop {
-    display: flex;
-}
-
-.total {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
