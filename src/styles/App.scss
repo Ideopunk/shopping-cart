@@ -74,12 +74,10 @@
 
 .home-link {
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 40vw;
     width: 20vw;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: center;
     font-size: 2.5rem;
 }
 

@@ -68,7 +68,7 @@ const App = () => {
 	const totalQuantity = products.reduce((a, b) => ({ quantity: a.quantity + b.quantity }));
 
 	return (
-		<Router>
+		<Router basename={process.env.PUBLIC_URL}>
 			<div className="App">
 				<nav className="navbar">
 					<NavLink
