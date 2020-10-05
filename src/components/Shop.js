@@ -19,7 +19,7 @@ const Shop = (props) => {
 
 const Card = (props) => {
 	const handleChange = (e) => {
-		props.alterQuantity(e.target.name, e.target.value);
+		props.alterQuantity(e.target.name, Number(e.target.value));
 	};
 
 	return (
@@ -37,9 +37,10 @@ const Card = (props) => {
 				</button>
 				<input
 					name={props.product.name}
-					type="number"
+					type="text"
 					min="0"
-					max="10"
+                    max="9"
+                    className="input-quantity"
 					value={props.product.quantity}
 					onChange={handleChange}
 					step="1"
@@ -57,7 +58,6 @@ const Card = (props) => {
 };
 
 const Cart = (props) => {
-	console.log(props.products);
 
 	const moneySum = (props) => {
 		const arrayOfTotals = props.products.map((product) => {
@@ -67,7 +67,6 @@ const Cart = (props) => {
 	};
 
 	const totalMoney = moneySum(props);
-	console.log(totalMoney);
 
 	const totalEntries = props.products.map((product) => {
 		if (product.quantity > 0) {
@@ -77,7 +76,7 @@ const Cart = (props) => {
 					<div className="cart-numbers">
 						<div>{`${product.quantity} * $${product.cost}.00`}</div>
 						<div value={product.cost * product.quantity}>
-							{product.quantity * product.cost}.00
+							${product.quantity * product.cost}.00
 						</div>
 					</div>
 				</div>
@@ -95,7 +94,7 @@ const Cart = (props) => {
 					<p className="cart-title">Total:</p>
 					<div className="cart-numbers">${totalMoney}.00</div>
 				</div>
-				<button className="checkout">Checkout</button>
+				<button className="checkout">Fake Checkout</button>
 			</div>
 		</div>
     );

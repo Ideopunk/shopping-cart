@@ -34,10 +34,12 @@ const App = () => {
 	const [products, setProducts] = useState(initialProducts);
 
 	const alterQuantity = (name, amount) => {
+		console.log(amount)
+		console.log(typeof(amount))
 		setProducts(
 			products.map((product) => {
 				if (product.name === name) {
-					product.quantity = amount;
+					if ((amount > -1 && amount < 10)) product.quantity = amount;
 				}
 				return product;
 			})
@@ -45,14 +47,11 @@ const App = () => {
 	};
 
 	const incrementQuantity = (name, direction) => {
-		console.log(name, direction);
-		console.log(products);
 		setProducts(
 			products.map((product) => {
-				console.log(product);
 				if (product.name === name) {
 					if (direction === "+") {
-						if (product.quantity < 10) {
+						if (product.quantity < 9) {
 							product.quantity++;
 						}
 					} else {
@@ -72,11 +71,16 @@ const App = () => {
 		<Router>
 			<div className="App">
 				<nav className="navbar">
-					<NavLink className="nav-link home-link" to="/" exact={true} activeClassName="active-link">
+					<NavLink
+						className="nav-link home-link"
+						to="/"
+						exact={true}
+						activeClassName="active-link"
+					>
 						Money Depot
 					</NavLink>
 					<NavLink className="nav-link" to="/shop" activeClassName="active-link">
-						Shop, {Number(totalQuantity.quantity)}
+						Shop <div className="psuedo">{Number(totalQuantity.quantity)}</div>
 					</NavLink>
 				</nav>
 				<Switch>
@@ -103,13 +107,18 @@ const Home = () => {
 	return (
 		<div className="content">
 			<div className="text-squeeze">
-			<p>
-				Thanks for visiting! This site was created by{" "}
-				<a target="_blank" rel="noopener noreferrer" href="https://github.com/Ideopunk/">
-					Conor Barnes
-				</a>{" "}
-				to practice React and routing. Please proceed to the <Link to="/shop">shop</Link> to buy your money.
-			</p>
+				<p>
+					Thanks for visiting! This site was created by{" "}
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://github.com/Ideopunk/"
+					>
+						Conor Barnes
+					</a>{" "}
+					to practice React and routing. Please proceed to the{" "}
+					<Link to="/shop">shop</Link> to buy your money.
+				</p>
 			</div>
 		</div>
 	);

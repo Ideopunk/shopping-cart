@@ -6,7 +6,6 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    overflow: hidden;
 }
 
 .navbar {
@@ -49,6 +48,7 @@
    text-decoration: none;
    margin-left: auto;
    transition: 0.1s color linear;
+   position: relative;
 }
 
 .nav-link:hover {
@@ -80,3 +80,25 @@ button {
     background-color: inherit;
     border-radius: 15px;
 }
+
+.cart-icon {
+    width: 10%;
+}
+
+.psuedo {
+    background-color: rgb(255, 96, 96);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 2.25ch;
+    height: 2.25ch;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+
