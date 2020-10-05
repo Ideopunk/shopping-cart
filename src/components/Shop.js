@@ -7,7 +7,7 @@ const Shop = (props) => {
 	return (
 		<div className="shop">
 			<div className="products">{productCards}</div>
-            <Cart products={props.products}/>
+			<Cart products={props.products} />
 		</div>
 	);
 };
@@ -40,7 +40,29 @@ const Card = (props) => {
 };
 
 const Cart = (props) => {
-	return <div className="cart">Total</div>;
+    console.log(props.products);
+    
+	const filler = props.products.map((product) => {
+        if (product.quantity > 0) {
+            return (
+                <div key={product.name}>
+                  <p>{product.name} </p>
+                  <div>{`${product.quantity} * $${product.cost}.00`}</div>
+                  <div value={product.cost * product.quantity}>{product.quantity * product.cost}.00</div>
+                </div>
+            )
+        } else {
+            return null;
+        }
+		
+    });
+
+	return (
+		<div className="cart">
+			<div>{filler}</div>
+			Total<button>Confirm purchase</button>
+		</div>
+	);
 };
 
 export default Shop;

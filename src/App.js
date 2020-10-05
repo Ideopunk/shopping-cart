@@ -6,25 +6,25 @@ import Shop from "./components/Shop";
 const App = () => {
 	const initialProducts = [
     {
-      name: "5",
+      name: "Five",
       url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/5_front.jpg",
       cost: 6,
       quantity: 0,
     },
 		{
-			name: "10",
+			name: "Ten",
 			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/10_front.jpg",
 			cost: 11,
 			quantity: 0,
 		},
 		{
-			name: "20",
+			name: "Twenty",
 			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/20_front.jpg",
 			cost: 22,
 			quantity: 0,
 		},
 		{
-			name: "50",
+			name: "Fifty",
 			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/50_front.jpg",
 			cost: 55,
 			quantity: 0,
