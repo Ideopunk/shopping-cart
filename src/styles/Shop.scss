@@ -1,6 +1,5 @@
 .shop {
 	height: 90vh;
-	min-height: 800px;
 	display: flex;
     box-sizing: border-box;
     background: linear-gradient(to top, rgb(192, 139, 118), white);
@@ -11,7 +10,7 @@
 	display: flex;
 	flex-flow: column wrap;
 	box-sizing: border-box;
-	flex: 3 300px;
+    flex: 3 300px;
 	border-right: 2px solid black;
 }
 
@@ -28,22 +27,37 @@
 
 .card {
 	width: 400px;
-	margin: 1.5rem;
-	border: 1px solid black;
+	margin: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: white;
+    text-align: center;
 	border-radius: 15px;
 	padding: 1.5rem;
 	box-sizing: border-box;
 }
 
-.product {
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-image {
 	width: 100%;
 	object-fit: contain;
 }
 
+.card-cost {
+    font-size: 1.25rem;
+    margin: 0.5rem;
+}
+
 .quantity {
 	display: flex;
-	justify-content: space-between;
-	max-width: 100px;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+    align-self: center;
+    width: 100%;
+    align-items: center;
 }
 
 // Cart things
@@ -93,4 +107,10 @@
 
 .total-div * {
 	font-size: 1.5rem;
+}
+
+.checkout {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(255, 230, 220);
 }

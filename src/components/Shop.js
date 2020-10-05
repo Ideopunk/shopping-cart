@@ -24,9 +24,9 @@ const Card = (props) => {
 
 	return (
 		<div className="card">
-			<p>{props.product.name}</p>
-			<img className="product" src={props.product.url} alt="money" />
-			<p>Sale: ${props.product.cost}</p>
+			<p className="card-title">{props.product.name}</p>
+			<img className="card-image" src={props.product.url} alt="money" />
+			<p className="card-cost">Sale: ${props.product.cost}</p>
 			<div className="quantity">
 				<button
 					onClick={() => {
@@ -95,7 +95,7 @@ const Cart = (props) => {
 					<p className="cart-title">Total:</p>
 					<div className="cart-numbers">${totalMoney}.00</div>
 				</div>
-				<button>Checkout</button>
+				<button className="checkout">Checkout</button>
 			</div>
 		</div>
     );
