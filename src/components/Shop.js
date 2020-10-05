@@ -26,7 +26,7 @@ const Card = (props) => {
 		<div className="card">
 			<p className="card-title">{props.product.name}</p>
 			<img className="card-image" src={props.product.url} alt="money" />
-			<p className="card-cost">Sale: ${props.product.cost}</p>
+			<p className="card-cost">Sale! ${props.product.cost}!</p>
 			<div className="quantity">
 				<button
 					onClick={() => {
