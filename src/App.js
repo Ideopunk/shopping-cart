@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
 import "./styles/App.scss";
 import Shop from "./components/Shop";
 
@@ -28,40 +28,43 @@ const App = () => {
 	const [products, setProducts] = useState(initialProducts);
 
 	const alterQuantity = (name, direction) => {
-    console.log(name, direction)
-    console.log(products)
+		console.log(name, direction);
+		console.log(products);
 		setProducts(
 			products.map((product) => {
-        console.log(product)
+				console.log(product);
 				if (product.name === name) {
-					if (direction === '+') {
-            if (product.quantity < 10) {
-              product.quantity++
-            }
-          } else {
-            if (product.quantity > 1) {
-              product.quantity--
-            }
-          }
+					if (direction === "+") {
+						if (product.quantity < 10) {
+							product.quantity++;
+						}
+					} else {
+						if (product.quantity > 0) {
+							product.quantity--;
+						}
+					}
 				}
 				return product;
 			})
 		);
 	};
 
+  const totalQuantity = products.reduce((a, b) => ({quantity: a.quantity + b.quantity}))
+  console.log(totalQuantity.quantity)
+
 	return (
 		<Router>
 			<div className="App">
 				<nav className="navbar">
-					<Link className="nav-link" to="/">
+					<NavLink className="nav-link" to="/" exact={true} activeClassName="active-link">
 						Home
-					</Link>
-					<Link className="nav-link" to="/about">
+					</NavLink>
+					<NavLink className="nav-link" to="/about" activeClassName="active-link">
 						About
-					</Link>
-					<Link className="nav-link" to="/shop">
-						Shop
-					</Link>
+					</NavLink>
+					<NavLink className="nav-link" to="/shop" activeClassName="active-link">
+						Shop, {totalQuantity.quantity}
+					</NavLink>
 				</nav>
 				<Switch>
 					<Route exact path="/" component={Home} />
@@ -69,7 +72,9 @@ const App = () => {
 					<Route
 						exact
 						path="/shop"
-						render={(props) => <Shop {...props} products={products} alterQuantity={alterQuantity}/>}
+						render={(props) => (
+							<Shop {...props} products={products} alterQuantity={alterQuantity} />
+						)}
 					/>
 				</Switch>
 			</div>

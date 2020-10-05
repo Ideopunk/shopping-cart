@@ -5,9 +5,9 @@ import React from "react";
 const Shop = (props) => {
     const productCards = props.products.map(product => <Card key={product.name} alterQuantity = {props.alterQuantity} product={product}/>)
 	return (
-		<div className="content">
-			Shop
-			{productCards}
+		<div className="shop">
+			<div className="products">{productCards}</div>
+			<div className="total">Total</div>
 		</div>
 	);
 };
