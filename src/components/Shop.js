@@ -59,24 +59,26 @@ const Card = (props) => {
 const Cart = (props) => {
 	console.log(props.products);
 
-    const moneySum = (props) => {
-        const arrayOfTotals = props.products.map(product => {
-            return product.cost * product.quantity
-        })
-        return arrayOfTotals.reduce((a, b) => a + b)
-    }
+	const moneySum = (props) => {
+		const arrayOfTotals = props.products.map((product) => {
+			return product.cost * product.quantity;
+		});
+		return arrayOfTotals.reduce((a, b) => a + b);
+	};
 
-    const totalMoney = moneySum(props)
-    console.log(totalMoney)
+	const totalMoney = moneySum(props);
+	console.log(totalMoney);
 
 	const totalEntries = props.products.map((product) => {
 		if (product.quantity > 0) {
 			return (
 				<div className="cart-entry" key={product.name}>
-					<p>{product.name} </p>
-					<div>{`${product.quantity} * $${product.cost}.00`}</div>
-					<div value={product.cost * product.quantity}>
-						{product.quantity * product.cost}.00
+					<p className="cart-title">{product.name} </p>
+					<div className="cart-numbers">
+						<div>{`${product.quantity} * $${product.cost}.00`}</div>
+						<div value={product.cost * product.quantity}>
+							{product.quantity * product.cost}.00
+						</div>
 					</div>
 				</div>
 			);
@@ -85,17 +87,20 @@ const Cart = (props) => {
 		}
 	});
 
-	return (
-		<div className="cart">
-			<div className="inner-cart">
-				<div>{totalEntries}</div>
-				<div className="total">
-					<h3>Total: ${totalMoney}.00</h3>
-					<button>Checkout</button>
+	const innerCart = (
+		<div className="inner-cart">
+			<div className="entries-list">{totalEntries}</div>
+			<div className="total-div">
+				<div className="cart-entry">
+					<p className="cart-title">Total:</p>
+					<div className="cart-numbers">${totalMoney}.00</div>
 				</div>
+				<button>Checkout</button>
 			</div>
 		</div>
-	);
+    );
+    
+	return <div className="cart">{totalMoney > 0? innerCart : null}</div>;
 };
 
 export default Shop;

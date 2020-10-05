@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
 import "./styles/App.scss";
 import Shop from "./components/Shop";
 
 const App = () => {
 	const initialProducts = [
-    {
-      name: "Five",
-      url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/5_front.jpg",
-      cost: 6,
-      quantity: 0,
-    },
+		{
+			name: "Five",
+			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/5_front.jpg",
+			cost: 6,
+			quantity: 0,
+		},
 		{
 			name: "Ten",
 			url: "https://www.bankofcanada.ca/wp-content/uploads/2015/09/10_front.jpg",
@@ -33,14 +33,16 @@ const App = () => {
 
 	const [products, setProducts] = useState(initialProducts);
 
-  const alterQuantity = (name, amount) => {
-    setProducts(products.map((product) => {
-      if (product.name === name) {
-        product.quantity = amount
-      }
-      return product;
-    }))
-  }
+	const alterQuantity = (name, amount) => {
+		setProducts(
+			products.map((product) => {
+				if (product.name === name) {
+					product.quantity = amount;
+				}
+				return product;
+			})
+		);
+	};
 
 	const incrementQuantity = (name, direction) => {
 		console.log(name, direction);
@@ -64,17 +66,14 @@ const App = () => {
 		);
 	};
 
-  const totalQuantity = products.reduce((a, b) => ({quantity: a.quantity + b.quantity}))
+	const totalQuantity = products.reduce((a, b) => ({ quantity: a.quantity + b.quantity }));
 
 	return (
 		<Router>
 			<div className="App">
 				<nav className="navbar">
-					<NavLink className="nav-link" to="/" exact={true} activeClassName="active-link">
-						Home
-					</NavLink>
-					<NavLink className="nav-link" to="/about" activeClassName="active-link">
-						About
+					<NavLink className="nav-link home-link" to="/" exact={true} activeClassName="active-link">
+						Money Depot
 					</NavLink>
 					<NavLink className="nav-link" to="/shop" activeClassName="active-link">
 						Shop, {Number(totalQuantity.quantity)}
@@ -82,12 +81,16 @@ const App = () => {
 				</nav>
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<Route exact path="/about" component={About} />
 					<Route
 						exact
 						path="/shop"
 						render={(props) => (
-							<Shop {...props} products={products} incrementQuantity={incrementQuantity} alterQuantity={alterQuantity} />
+							<Shop
+								{...props}
+								products={products}
+								incrementQuantity={incrementQuantity}
+								alterQuantity={alterQuantity}
+							/>
 						)}
 					/>
 				</Switch>
@@ -97,20 +100,17 @@ const App = () => {
 };
 
 const Home = () => {
-	return <div>home</div>;
-};
-
-const About = () => {
 	return (
 		<div className="content">
-			<h2>About</h2>
+			<div className="text-squeeze">
 			<p>
 				Thanks for visiting! This site was created by{" "}
 				<a target="_blank" rel="noopener noreferrer" href="https://github.com/Ideopunk/">
 					Conor Barnes
 				</a>{" "}
-				as a way to practice routing with React.
+				to practice React and routing. Please proceed to the <Link to="/shop">shop</Link> to buy your money.
 			</p>
+			</div>
 		</div>
 	);
 };
