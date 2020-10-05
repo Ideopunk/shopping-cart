@@ -2,7 +2,7 @@ import React from "react";
 
 const Shop = (props) => {
 	const productCards = props.products.map((product) => (
-		<Card key={product.name} alterQuantity={props.alterQuantity} product={product} />
+		<Card key={product.name} incrementQuantity={props.incrementQuantity} alterQuantity={props.alterQuantity} product={product} />
 	));
 	return (
 		<div className="shop">
@@ -13,6 +13,11 @@ const Shop = (props) => {
 };
 
 const Card = (props) => {
+
+    const handleChange = e => {
+        props.alterQuantity(e.target.name, e.target.value)
+    }
+
 	return (
 		<div className="card">
 			<p>{props.product.name}</p>
@@ -21,15 +26,15 @@ const Card = (props) => {
 			<div className="quantity">
 				<button
 					onClick={() => {
-						props.alterQuantity(props.product.name, "-");
+						props.incrementQuantity(props.product.name, "-");
 					}}
 				>
 					-
 				</button>
-				<p>{props.product.quantity}</p>
+                <input name={props.product.name} type="number" min="0" max="10" value={props.product.quantity} onChange={handleChange} step="1"/>
 				<button
 					onClick={() => {
-						props.alterQuantity(props.product.name, "+");
+						props.incrementQuantity(props.product.name, "+");
 					}}
 				>
 					+
@@ -45,7 +50,7 @@ const Cart = (props) => {
 	const filler = props.products.map((product) => {
         if (product.quantity > 0) {
             return (
-                <div key={product.name}>
+                <div className="cart-entry" key={product.name}>
                   <p>{product.name} </p>
                   <div>{`${product.quantity} * $${product.cost}.00`}</div>
                   <div value={product.cost * product.quantity}>{product.quantity * product.cost}.00</div>

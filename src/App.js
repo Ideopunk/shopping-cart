@@ -33,7 +33,16 @@ const App = () => {
 
 	const [products, setProducts] = useState(initialProducts);
 
-	const alterQuantity = (name, direction) => {
+  const alterQuantity = (name, amount) => {
+    setProducts(products.map((product) => {
+      if (product.name === name) {
+        product.quantity = amount
+      }
+      return product;
+    }))
+  }
+
+	const incrementQuantity = (name, direction) => {
 		console.log(name, direction);
 		console.log(products);
 		setProducts(
@@ -69,7 +78,7 @@ const App = () => {
 						About
 					</NavLink>
 					<NavLink className="nav-link" to="/shop" activeClassName="active-link">
-						Shop, {totalQuantity.quantity}
+						Shop, {Number(totalQuantity.quantity)}
 					</NavLink>
 				</nav>
 				<Switch>
@@ -79,7 +88,7 @@ const App = () => {
 						exact
 						path="/shop"
 						render={(props) => (
-							<Shop {...props} products={products} alterQuantity={alterQuantity} />
+							<Shop {...props} products={products} incrementQuantity={incrementQuantity} alterQuantity={alterQuantity} />
 						)}
 					/>
 				</Switch>

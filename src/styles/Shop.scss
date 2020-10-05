@@ -7,9 +7,9 @@
 .products {
 	display: flex;
 	flex-flow: column wrap;
-	height: 700px;
 	box-sizing: border-box;
-	flex: 3 300px;
+    flex: 3 300px;
+    border-right: 2px solid black;
 }
 
 .cart {
@@ -19,7 +19,7 @@
 	align-items: center;
 	box-sizing: border-box;
     flex: 2 200px;
-    border-left: 2px solid black;
+    border: 1px solid red;
 }
 
 // Card css
@@ -42,4 +42,10 @@
 	display: flex;
 	justify-content: space-between;
 	max-width: 100px;
+}
+
+// Cart things
+
+.cart-entry {
+    margin: 0.5rem;
 }
