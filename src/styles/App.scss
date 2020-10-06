@@ -4,17 +4,12 @@
 @import "Cart";
 
 .App {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     height: 100vh;
     overflow: hidden;
 }
 
 .navbar {
-    min-height: 100px;
-    height: 100px;
-    max-height: 100px;
+    height: 5rem;
     background: linear-gradient(to bottom, rgb(178, 215, 226), white);
     border-bottom: 2px solid black;
     color: black;
